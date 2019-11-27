@@ -16,7 +16,9 @@ bot.on("message", async message => {
     let args = messageArray.splice(1);
 
     if (cmd === `$suggest`) {
-        if (message.channel.id !== "645349504819789827" || !message.member.hasPermission("KICK_MEMBERS")) return;
+        if (message.channel.id !== "645349504819789827") {
+	        if (!message.member.hasPermission("KICK_MEMBERS")) return;    
+	    }
         message.delete();
 
         let titleMsg = await message.channel.send(text(`What is the title of your suggestion?`));
